@@ -124,7 +124,7 @@ buttonCount++;
 		// If the buttonPressed was the firstButton
 if(buttonPressed == firstButton) {
 			// Call the askQuestion() method
-askQuestion("Where is amazing league of programers", "In the Hacienda", 100);
+askQuestion("Where is amazing league located", "In the Hacienda", 100);
 }
  
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
@@ -132,7 +132,7 @@ buttonCount++;
 		// If the buttonPressed was the secondButton
 if(buttonPressed == secondButton) {
 			// Call the askQuestion() method with a harder question
-askQuestion("When was java coded founded", "Early 90's", 200);
+askQuestion("When was java coded founded", "early 90's", 200);
 }
 if(buttonPressed == thirdButton) {
 	askQuestion("Is there water ", "yes", 400);
@@ -141,7 +141,7 @@ if(buttonPressed == fourthButton) {
 	askQuestion("is there snacks", "yes", 600);
 }
 if(buttonPressed == fifthButton) {
-	askQuestion("")
+	askQuestion("is there another class", "yes", 1000);
 }
 		// Clear the text on the button that was pressed (set the button text to nothing)
 buttonPressed.setText("");
