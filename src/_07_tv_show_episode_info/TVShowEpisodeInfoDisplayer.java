@@ -1,6 +1,8 @@
 package _07_tv_show_episode_info;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -8,20 +10,36 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class TVShowEpisodeInfoDisplayer {
-	
+public class TVShowEpisodeInfoDisplayer implements ActionListener {
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JTextField text = new JTextField();
+	JButton button = new JButton();
 	public TVShowEpisodeInfoDisplayer() {
-		
+		frame.add(panel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		panel.add(text);
+		text.setColumns(25);
+		frame.setTitle("TV Show Info");
+		button.setText("Submit");
+		panel.add(button);
+		button.addActionListener(this);
+		frame.pack();
+		frame.setVisible(true);
 	}
 
-	
-	
-	
 
-/////////////////////////DO NOT MODIFY ANY CODE BELOW THIS LINE//////////////////////////////////////////
-	
+
+
+
+	/////////////////////////DO NOT MODIFY ANY CODE BELOW THIS LINE//////////////////////////////////////////
+
 	/**
 	 * Searches the tvmaze.com api for season and episode information about
 	 * a chosen show and returns the information in a String
@@ -35,11 +53,11 @@ public class TVShowEpisodeInfoDisplayer {
 		if(id < 0) {
 			return "";
 		}
-		
+
 		int totalSeasons = 0;
 		int totalEpisodes = 0;
 		int[] episodes = null;
-		
+
 		try {
 			URL url = new URL("https://api.tvmaze.com/shows/"+id+"/seasons");
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -66,12 +84,25 @@ public class TVShowEpisodeInfoDisplayer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		String res = showTitle + "\nTotal Seasons: " + totalSeasons + "\nTotal Episodes: " + totalEpisodes + '\n';
 		for(int i = 0; i < totalSeasons; i++) {
 			res += "Season " + (i + 1) +": " + (episodes[i] > -1 ? episodes[i] : "?") + " episodes\n";
 		}
-		
+
 		return res;
+	}
+
+
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		String show = text.getText();
+		show = show.replace(" ", "%20");
+		String episode	= getShowEpisodeData(show);
+		JOptionPane.showMessageDialog(null, episode);		
 	}
 }

@@ -1,13 +1,17 @@
 package _08_pig_latin;
 
+import javax.swing.JFrame;
+
 public class PigLatinTranslator {
     /**
+     
      * Method to translate a english to pig latin.
      * 
      * @param s
      *            The sentence in English
      * @return The pig latin version
      */
+	
     public static String translateEnglishToPigLatin(String s) {
         String latin = "";
         int i = 0;

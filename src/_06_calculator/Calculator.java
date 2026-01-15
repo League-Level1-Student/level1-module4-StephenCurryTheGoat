@@ -20,12 +20,9 @@ public class Calculator implements ActionListener {
 	JTextField text = new JTextField();
 	JTextField text1 = new JTextField();
 
-	public static void main(String[] args) {
-		Calculator calc = new Calculator();
-		calc.setUp();
-	}
+	
 
-	private void setUp() {
+	 void setUp() {
 		// TODO Auto-generated method stub
 		frame.add(panel);
 		panel.add(add);
@@ -46,21 +43,6 @@ public class Calculator implements ActionListener {
 		frame.setVisible(true);
 	}
 
-	void add() {
-
-	}
-
-	void multiply() {
-
-	}
-
-	void subtract() {
-
-	}
-
-	void divide() {
-
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
