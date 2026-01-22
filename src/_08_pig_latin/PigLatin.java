@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import game_tools.Sound;
+
 public class PigLatin implements ActionListener {
 JFrame frame = new JFrame();
 JPanel panel = new JPanel();
@@ -36,11 +38,27 @@ void setUp() {
 	button2.addActionListener(this);
 	frame.pack();
 	frame.setVisible(true);
+
 }
 
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
-	
+	if(e.getSource() == button) {
+		 
+		String en = english.getText(); 
+		String text =  PigLatinTranslator.translateEnglishToPigLatin(en);
+		 pigLatin.setText(text);
+		}
+	if(e.getSource() == button1) {
+		String latin = pigLatin.getText();
+		String text1 = PigLatinTranslator.translatePigLatinToEnglish(latin);
+		english.setText(text1);
+	}
+	if(e.getSource() == button2) {
+		
+		
+		Sound.speak(pigLatin.getText());
+	}
 }
 }
