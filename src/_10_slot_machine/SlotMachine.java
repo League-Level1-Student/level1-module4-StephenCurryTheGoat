@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class SlotMachine implements ActionListener {
@@ -64,10 +65,45 @@ Random ran = new Random();
 			try {
 				
 				int x = ran.nextInt(3);
-				if() {
-				label3 = createLabelImage("cherry.png");
+				if(x == 0) {
+				//label3 = createLabelImage("cherry.png");
 				label = createLabelImage("grapefruit.png");
-				label2 = createLabelImage("lime.png");
+				//label2 = createLabelImage("lime.png");
+				}else if(x==1) {
+					label = createLabelImage("lime.png");
+				}else if(x==2) {
+					label = createLabelImage("cherry.png");
+				}
+				int y = ran.nextInt(3);
+				if(y == 0) {
+					//label3 = createLabelImage("cherry.png");
+					label2 = createLabelImage("grapefruit.png");
+					//label2 = createLabelImage("lime.png");
+					}
+					else if(y==1) {
+						label2 = createLabelImage("lime.png");
+					}else if(y==2) {
+						label2 = createLabelImage("cherry.png");
+					}
+				int z = ran.nextInt(3);
+				if(z == 0) {
+					//label3 = createLabelImage("cherry.png");
+					label3 = createLabelImage("grapefruit.png");
+					//label2 = createLabelImage("lime.png");
+					}
+					else if(z==1) {
+						label3 = createLabelImage("lime.png");
+					}else if(z==2) {
+						label3 = createLabelImage("cherry.png");
+					}
+				
+				panel.add(label);
+			panel.add(label2);
+			panel.add(label3);
+
+			frame.pack();
+			if(x == y && y == z) {
+					JOptionPane.showMessageDialog(null, "You win");
 				}
 				
 				
@@ -75,11 +111,7 @@ Random ran = new Random();
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			panel.add(label);
-			panel.add(label2);
-			panel.add(label3);
-
-			frame.pack();
+			
 		}
 		
 		

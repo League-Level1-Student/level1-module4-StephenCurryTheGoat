@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -20,6 +21,7 @@ import javax.swing.JPanel;
  */
 public class LightsOut implements MouseListener {
 
+	JFrame frame = new JFrame();
 	JPanel gamePanel = new JPanel();
 	GridLayout layout = new GridLayout();
 	public LightsOut() {
@@ -27,29 +29,41 @@ public class LightsOut implements MouseListener {
 		/** PART 1. CREATE YOUR LIGHT BOARD **/
 		//1. Make your gamePanel a 5x5 grid with setLayout(new GridLayout(5, 5));
 		
-		setLayout(new GridLayout(5,5));
+gamePanel.setLayout(new GridLayout(5,5));
 			//2. Add 25 JLabels to your gamePanel (these are your lights)
-gamePanel.add(25);
+		for(int i = 0; i<25; i++){
+			JLabel label = new JLabel();
+			
+		
+		
 			//3. Use setText() to add a position number to each light (0-24).
+		label.setText(""+i);
 
 			//4. Set the background of each light to LIGHT_GRAY
+		label.setBackground(Color.LIGHT_GRAY);
+		label.setOpaque(true);
+		label.addMouseListener(this);
 			// - you will also have to set the background to opaque.
 			// - Use light.setOpaque(true);
 
 			//5. Add a mouseListener to each light
+		gamePanel.add(label);
 		
-		
+		}
 		//6. Add your panel to a frame
 
+		frame.add(gamePanel);
 		//7. Set the size of the frame
-
+frame.setSize(500,500);
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisible(true);
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		/** PART 2: TOGGLE NEIGHBORING LIGHTS **/
 		// 1. Get the light that was clicked on `(JLabel) e.getSource`
-
+e.getSource();
 		// 2. Get the number (position) of the light
 
 		// 3. Now use the makeMove method to code which lights turn on and off.
